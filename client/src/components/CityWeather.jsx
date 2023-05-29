@@ -43,8 +43,8 @@ export default function CityWeather({
     "November",
     "December",
   ];
-  date = Date(date);
-  date = new Date(date);
+  // date = Date(date);
+  date = new Date(date*1000);
 
   return (
     <>

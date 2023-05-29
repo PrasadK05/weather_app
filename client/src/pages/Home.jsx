@@ -26,24 +26,27 @@ export default function Home() {
   let [data, setData] = useState(init);
   let [loading, setLoading] = useState(false);
   let [error, setError] = useState(false);
-  // console.log("yes")
 
   let getData = (val) => {
     setCity(val);
   };
 
   useEffect(() => {
-    console.log("yes");
     setLoading(true);
     getWeather(city)
       .then((res) => {
         console.log(res);
-        setData(res);
+        if(res.cod==="404"){
+          setLoading(false);
+          setError(true); 
+          return alert("invalid city")
+        }
         setLoading(false);
+        setError(false);
+        setData(res);       
       })
       .catch((err) => {
-        console.log(err);
-        setError(true);
+        setError(true);        
       });
   }, [city]);
 
@@ -69,8 +72,12 @@ export default function Home() {
         loading={loading}
         error={error}
       />
-      <Box w={{base:"100%", sm:"100%", md:"80%", lg:"70%"}} m="auto" mt="30px">
-        <Link>
+      <Box
+        w={{ base: "100%", sm: "100%", md: "80%", lg: "70%" }}
+        m="auto"
+        mt="30px"
+      >
+        <Link to={`/forecast/${city}`}>
           <Button>View Forecast</Button>
         </Link>
       </Box>

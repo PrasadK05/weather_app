@@ -7,7 +7,7 @@ export default function AllRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      <Route path="/forecast" element={<Forecast />}></Route>
+      <Route path="/forecast/:city" element={<Forecast />}></Route>
     </Routes>
   );
 }

@@ -9,11 +9,16 @@ export default function Form({ getData }) {
   };
   let handleSubmit = () => {
     getData(val);
-    setVal("")
+    setVal("");
   };
   return (
-    <Box w={{base:"90%", sm:"90%", md:"50%", lg:"30%"}} display={"flex"} m={"auto"} mt="30px">
-      <Input type="text" placeholder="Enter City" onChange={hnadleChage} />
+    <Box
+      w={{ base: "90%", sm: "90%", md: "50%", lg: "30%" }}
+      display={"flex"}
+      m={"auto"}
+      mt="30px"
+    >
+      <Input type="text" placeholder="Enter City" onChange={hnadleChage} value={val}/>
       <Button onClick={handleSubmit}>Submit</Button>
     </Box>
   );
